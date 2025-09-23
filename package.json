@@ -1,7 +1,7 @@
 {
   "name": "rn-metacritics",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -9,13 +9,38 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/metro-config": "^0.20.17",
+    "@rn-primitives/dropdown-menu": "^1.2.0",
+    "@rn-primitives/slot": "^1.2.0",
+    "@roninoss/icons": "^0.0.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "expo": "~53.0.22",
+    "expo-constants": "~17.1.7",
+    "expo-haptics": "^14.1.4",
+    "expo-linking": "~7.1.7",
+    "expo-router": "~5.1.5",
+    "expo-secure-store": "^14.2.3",
     "expo-status-bar": "~2.2.3",
+    "lucide-react": "^0.542.0",
+    "lucide-react-native": "^0.544.0",
+    "nativewind": "^4.1.23",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "react": "19.0.0",
-    "react-native": "0.79.6"
+    "react-native": "0.79.5",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "^5.4.0",
+    "react-native-screens": "~4.11.1",
+    "react-native-svg": "15.11.2",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "expo-checkbox": "~4.1.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@types/react": "~19.0.10",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.8.3"
   },
   "private": true
 }
