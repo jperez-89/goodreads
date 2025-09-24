@@ -16,7 +16,6 @@ export const EyeSlash = () => {
 };
 
 export const Lock = () => {
-  // return <AntDesign name="lock" size={24} color="black" />;
   return <Feather name="lock" size={24} color="black" />;
 };
 
@@ -41,7 +40,8 @@ export const PlusIcon = (props) => {
 };
 
 export const DarkThemeIcon = (props) => {
-  return <MaterialIcons name="dark-mode" size={24} {...props} />;
+  return <FontAwesome name="plus" size={24} color="black" {...props} />;
+  // return <MaterialIcons name="dark-mode" size={24} {...props} />;
 };
 
 export const LightThemeIcon = (props) => {
