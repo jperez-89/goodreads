@@ -4,7 +4,7 @@ import { AnimatedCard } from "@/components/AnimatedCard";
 import useBook from "@/hooks/useBook";
 import { useSession } from "@/context/aContext";
 
-const Books = () => {
+export default function Books() {
   const { books, loading, getBooks } = useBook();
   const { session } = useSession()
   const { user } = JSON.parse(session);
@@ -47,6 +47,3 @@ const Books = () => {
     </>
   )
 }
-
-export default Books;
-
