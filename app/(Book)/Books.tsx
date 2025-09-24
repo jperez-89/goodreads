@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
+import { ActivityIndicator, FlatList } from "react-native";
 import { Stack } from "expo-router";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import useBook from "@/hooks/useBook";
@@ -9,13 +9,12 @@ export default function Books() {
   const { session } = useSession()
   const { user } = JSON.parse(session);
 
-
   return (
     <>
       <Stack.Screen options={{
         headerTitle: `Books - ${user.firstName} ${user.lastName}`,
         animation: 'slide_from_left',
-        headerLeft: () => null,
+        headerLeft: () => null
       }} />
       {
         books.length === 0 ?

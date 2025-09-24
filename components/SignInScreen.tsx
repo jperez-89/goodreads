@@ -6,7 +6,7 @@ import { useSession } from "@/context/aContext";
 import { Eye, EyeSlash, Lock, Mail } from "./Icons/Icons";
 
 
-export default function SignIn() {
+const SignInScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -127,3 +127,5 @@ export default function SignIn() {
         </View>
     );
 }
+
+export default SignInScreen

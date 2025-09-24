@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "rn-metacritics",
-    "slug": "rn-metacritics",
+    "jsEngine": "jsc",
+    "name": "goodreads",
+    "slug": "goodreads",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -35,7 +36,8 @@
           "configureAndroidBackup": true,
           "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
         }
-      ]
+      ],
+      "expo-asset"
     ]
   }
 }

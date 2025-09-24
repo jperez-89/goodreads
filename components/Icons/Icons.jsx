@@ -40,8 +40,7 @@ export const PlusIcon = (props) => {
 };
 
 export const DarkThemeIcon = (props) => {
-  return <FontAwesome name="plus" size={24} color="black" {...props} />;
-  // return <MaterialIcons name="dark-mode" size={24} {...props} />;
+  return <MaterialIcons name="dark-mode" size={24} {...props} />;
 };
 
 export const LightThemeIcon = (props) => {

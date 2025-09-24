@@ -7,6 +7,7 @@ import { DarkThemeIcon, LightThemeIcon, SettingThemeIcon } from '@/components/Ic
 export default function Layout({ children }: { children: React.ReactNode }) {
     const { theme, toggleTheme } = useTheme();
     const { signOut, session } = useSession();
+
     const { access_token } = JSON.parse(session);
 
     const handlePress = () => {
@@ -40,10 +41,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         </View>
                     </>
                 )
-            }} >
-            {children}
-            {/* <Stack.Screen name="Books" />
-            <Stack.Screen name="[book_Id]" /> */}
-        </Stack>
+            }} />
     )
 }

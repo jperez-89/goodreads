@@ -6,7 +6,7 @@ import { Eye, EyeSlash } from './Icons/Icons';
 import Alert from './Alert';
 import { useSession } from '@/context/aContext';
 
-const SignUp = () => {
+const SignUpScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -94,4 +94,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default SignUpScreen

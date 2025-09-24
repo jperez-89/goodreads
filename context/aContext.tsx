@@ -41,7 +41,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
         // console.info("aContext L31 - call_Login", response);
         if (response.error) return response;
 
-        await SecureStore.setItemAsync("user", JSON.stringify(response))
+        // await SecureStore.setItemAsync("user", JSON.stringify(response))
 
         return response
     }
@@ -77,16 +77,14 @@ export function SessionProvider({ children }: PropsWithChildren) {
                     setSession(JSON.stringify(response));
                 },
                 signOut: (token: string) => {
-                    call_Logout(token)
+                    // call_Logout(token)
+                    // Este set elimina lo que haya en SecureStore con useStorageState
                     setSession(null);
                     // console.warn("aContext L66 - Sesion cerrada - signOut", token);
                 },
                 getUser: async () => {
                     const data = await getUser();
-                    const currentSession = JSON.parse(data);
-
                     setSession(data);
-                    // setSession(currentSession);
                     // console.log("aContext L73 - getUser", data);
                 },
                 session,
