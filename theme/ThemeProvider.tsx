@@ -25,17 +25,6 @@ type Theme = {
     }
 };
 
-// bg - sky - 100 : #E0F2FE
-// bg - sky - 200 : #BAE6FD
-// bg - sky - 300 : #7DD3FC
-// bg - sky - 400 : #38BDF8
-// bg - sky - 500 : #0EA5E9
-// bg - sky - 600 : #0284C7
-// bg - sky - 700 : #0369A1
-// bg - sky - 800 : #075985
-// bg - sky - 900 : #0C4A6E
-// bg - sky - 950 : #082F49
-
 const lightTheme: Theme = {
     colors: {
         currentTheme: "light",
