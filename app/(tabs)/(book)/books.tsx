@@ -1,30 +1,19 @@
 import { ActivityIndicator, FlatList, View } from "react-native";
-import { Stack } from "expo-router";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import useBook from "@/hooks/useBook";
-import { useSession } from "@/context/aContext";
-import { useTheme } from "@/theme/ThemeProvider";
 
 export default function Books() {
   const { books, loading, getBooks } = useBook();
-  const { session } = useSession()
-  const { user } = JSON.parse(session);
-  const { theme } = useTheme();
 
   return (
     <>
-      <Stack.Screen options={{
-        headerTitle: `Books - ${user.firstName} ${user.lastName}`,
-        animation: 'slide_from_left',
-        headerLeft: () => null
-      }} />
       {
         books.length === 0 ?
           (
             <ActivityIndicator color={"bg-sky-800"} size={"large"} />
           ) :
           (
-            <View className={`${theme.background.bg_content}`}>
+            <View >
               <FlatList
                 onRefresh={getBooks}
                 refreshing={loading}
@@ -46,7 +35,6 @@ export default function Books() {
             </View>
           )
       }
-
     </>
   )
 }

@@ -17,7 +17,7 @@ export default function Layout() {
     return (
         <Stack
             screenOptions={{
-                headerTitle: `Movies - ${user.firstName} ${user.lastName}`,
+                headerTitle: `Books - ${user.firstName} ${user.lastName}`,
                 contentStyle: { backgroundColor: theme.background.content },
                 statusBarStyle: 'auto',
                 headerStyle: { backgroundColor: theme.background.header },

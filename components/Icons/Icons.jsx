@@ -48,5 +48,13 @@ export const LightThemeIcon = (props) => {
 };
 
 export const SettingThemeIcon = (props) => {
-  return <AntDesign name="setting" size={24} {...props} />;
+  return <AntDesign name="setting" size={24} color="black" {...props} />;
+};
+
+export const MoviesIcon = (props) => {
+  return <MaterialIcons name="local-movies" size={24} color="black" {...props} />;
+};
+
+export const BooksIcon = (props) => {
+  return <MaterialIcons name="book" size={24} color="black" {...props} />;
 };

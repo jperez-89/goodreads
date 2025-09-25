@@ -11,12 +11,7 @@ interface BookReviewListItemProps {
     rating: number;
 }
 
-export const BookReviewListItem = ({
-    userName,
-    title,
-    comment,
-    rating,
-}: BookReviewListItemProps) => {
+export const BookReviewListItem = ({ userName, title, comment, rating }: BookReviewListItemProps) => {
     const { theme } = useTheme();
     const textColor = theme.colors.currentTheme === 'dark' ? theme.colors.textWhite2 : theme.colors.textBlack;
 

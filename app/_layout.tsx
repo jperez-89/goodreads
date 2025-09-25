@@ -21,8 +21,7 @@ function App() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Protected guard={!!session}>
-        <Stack.Screen name="(book)" />
-        {/* <Stack.Screen name="(tabs)" /> */}
+        <Stack.Screen name="(tabs)" />
       </Stack.Protected>
 
       <Stack.Protected guard={!session}>
