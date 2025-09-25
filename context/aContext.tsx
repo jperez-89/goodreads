@@ -1,4 +1,4 @@
-import { use, createContext, type PropsWithChildren, useState } from 'react';
+import { createContext, type PropsWithChildren, useContext } from 'react';
 import { useStorageState } from '@/hooks/useStorageState';
 import { loginService, registerService } from '@/services/libraries';
 import * as SecureStore from 'expo-secure-store';
@@ -16,7 +16,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 // This hook can be used to access the user info.
 export function useSession() {
-    const value = use(AuthContext);
+    const value = useContext(AuthContext);
     if (!value) {
         throw new Error('useSession must be wrapped in a <SessionProvider />');
     }
@@ -80,7 +80,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
                     // call_Logout(token)
                     // Este set elimina lo que haya en SecureStore con useStorageState
                     setSession(null);
-                    // console.warn("aContext L66 - Sesion cerrada - signOut", token);
+                    console.warn("aContext L66 - Sesion cerrada - signOut", token);
                 },
                 getUser: async () => {
                     const data = await getUser();
