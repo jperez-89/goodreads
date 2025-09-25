@@ -1,6 +1,5 @@
-import { useEffect, useCallback, useReducer, useState } from 'react';
+import { useEffect, useCallback, useReducer } from 'react';
 import * as SecureStore from 'expo-secure-store';
-import { Platform } from 'react-native';
 
 type UseStateHook<T> = [[boolean, T | null], (value: T | null) => void];
 
@@ -19,7 +18,6 @@ export async function setStorageItemAsync(key: string, value: string | null) {
     } else {
         await SecureStore.setItemAsync(key, value);
     }
-
 }
 
 export function useStorageState(key: string): UseStateHook<string> {
