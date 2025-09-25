@@ -1,5 +1,4 @@
 import "../global.css";
-import { useEffect } from "react";
 import { Stack } from "expo-router";
 import { SessionProvider, useSession } from "@/context/aContext";
 import { SplashScreenController } from "@/components/SplashScreenController";
@@ -17,24 +16,16 @@ export default function Layout() {
 }
 
 function App() {
-  const { session, getUser } = useSession()
-
-  useEffect(() => {
-    // console.log("session L23", session);
-    if (!session) return
-    getUser()
-  }, [])
+  const { session } = useSession()
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Protected guard={!!session}>
         <Stack.Screen name="(book)" />
-        <Stack.Screen name="(tabs)" />
+        {/* <Stack.Screen name="(tabs)" /> */}
       </Stack.Protected>
 
       <Stack.Protected guard={!session}>
-        {/* <Stack.Screen options={{ statusBarStyle: 'dark' }} name="signinScreen" />
-        <Stack.Screen options={{ statusBarStyle: 'light' }} name="signupScreen" /> */}
         <Stack.Screen name="(auth)" />
       </Stack.Protected>
     </Stack>
