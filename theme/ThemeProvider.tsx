@@ -4,11 +4,11 @@ import { Appearance } from "react-native";
 type Theme = {
     colors: {
         currentTheme: string;
-        background: string;
-        backgroundHeader: string;
         text: string;
         textContent: string;
         textWhite: string;
+        textWhite2: string;
+        textBlack: string;
         primary: string;
         secondary: string;
         card: string;
@@ -16,40 +16,72 @@ type Theme = {
         btnPrimary: string;
         btnSecondary: string;
     };
+    background: {
+        header: string;
+        content: string;
+        bg_content: string;
+        btn_primary: string;
+        btn_secondary: string;
+    }
 };
+
+// bg - sky - 100 : #E0F2FE
+// bg - sky - 200 : #BAE6FD
+// bg - sky - 300 : #7DD3FC
+// bg - sky - 400 : #38BDF8
+// bg - sky - 500 : #0EA5E9
+// bg - sky - 600 : #0284C7
+// bg - sky - 700 : #0369A1
+// bg - sky - 800 : #075985
+// bg - sky - 900 : #0C4A6E
+// bg - sky - 950 : #082F49
 
 const lightTheme: Theme = {
     colors: {
         currentTheme: "light",
-        backgroundHeader: "#007Ade",
-        background: "#F3F3F3",
         textWhite: "#F3F3F3",
+        textWhite2: "text-white",
+        textBlack: "text-dark",
         text: "#F3F3F3",
-        textContent: "#000",
-        primary: "#007Ada",
+        textContent: "color-sky-900",
+        primary: "#0284C7",
         secondary: '',
-        card: "#F3F3F3",
+        card: 'bg-sky-50',
         headerTintColor: "#F3F3F3",
-        btnPrimary: "#007Ada",
+        btnPrimary: "#0284C7",
         btnSecondary: "",
     },
+    background: {
+        header: "#0284C7",
+        content: "#F3F3F3",
+        bg_content: 'bg-white',
+        btn_primary: "bg-sky-600",
+        btn_secondary: "bg-slate-400",
+    }
 };
 
 const darkTheme: Theme = {
     colors: {
         currentTheme: "dark",
-        backgroundHeader: "#111",
-        background: "#111",
         textWhite: "#F3F3F3",
+        textWhite2: "text-white",
+        textBlack: "text-dark",
         text: "#F3F3F3",
-        textContent: "#000",
+        textContent: "text-white",
         primary: "#007A",
         secondary: '#',
-        card: "#C8C8C8",
+        card: 'bg-sky-800/80',
         headerTintColor: "#F3F3F3",
         btnPrimary: "#007Ada",
         btnSecondary: "",
     },
+    background: {
+        header: "#082F49",
+        content: "#082F49",
+        bg_content: 'bg-sky-950',
+        btn_primary: "bg-sky-700",
+        btn_secondary: "bg-slate-600",
+    }
 };
 
 type ThemeContextType = {
