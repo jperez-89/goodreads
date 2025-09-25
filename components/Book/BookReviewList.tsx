@@ -2,6 +2,7 @@ import useBook from '@/hooks/useBook';
 import React, { useEffect } from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native';
 import { BookReviewListItem } from './BookReviewListItem';
+import { useTheme } from '@/theme/ThemeProvider';
 
 interface BookReviewListProps {
     book_id: string;
@@ -9,6 +10,7 @@ interface BookReviewListProps {
 
 const BookReviewList: React.FC<BookReviewListProps> = ({ book_id }) => {
     const { getReviewByBookId, getMoreReviewByBookId, reviews, page, hasMore, loading, isLoadingMore } = useBook();
+    const { theme } = useTheme();
 
     const onRefresh = async () => {
         // console.warn("BookReviewList L14 - onRefresh");
@@ -49,7 +51,7 @@ const BookReviewList: React.FC<BookReviewListProps> = ({ book_id }) => {
                 isLoadingMore ? <ActivityIndicator size="small" /> : null
             }
             ListEmptyComponent={
-                !loading ? <Text className='text-sm p-3'>No reviews available for this book.</Text> : null
+                !loading ? <Text className={`text-sm p-3 ${theme.colors.currentTheme === 'dark' ? theme.colors.textWhite2 : theme.colors.textBlack}`}>No reviews available for this book.</Text> : null
             }
             refreshing={loading}
             onRefresh={onRefresh}

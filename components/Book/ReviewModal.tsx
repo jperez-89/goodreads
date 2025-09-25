@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Stack } from 'expo-router'
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { View, Text, Modal, Pressable, TextInput } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -21,7 +20,7 @@ const ReviewModal = ({ bookId, visible, onClose }) => {
 
     const { theme } = useTheme();
 
-    const containerStyle = theme.colors.currentTheme === 'dark' ? 'bg-black' : 'bg-red-500';
+    const bgInputs = theme.colors.currentTheme === 'dark' ? 'bg-black/20' : 'bg-black/5';
     const textStyle = theme.colors.currentTheme === 'dark' ? 'text-white' : 'text-black';
 
     function handleAddReview(): void {
@@ -50,29 +49,29 @@ const ReviewModal = ({ bookId, visible, onClose }) => {
 
     return (
         <>
-            <Modal backdropColor={theme.colors.background} visible={visible} animationType="fade" onRequestClose={() => { onClose(false) }} >
-                <View className={`rounded-xl mx-2 ${theme.colors.background}`}>
-                    <View className={`mt-12 mx-3 py-10 rounded-2xl ${containerStyle}`}>
+            <Modal backdropColor={theme.background.bg_content} visible={visible} animationType="fade" onRequestClose={() => { onClose(false) }} >
+                <View className={`rounded-xl mx-2 ${theme.background.bg_content}`}>
+                    <View className={`mt-12 mx-3 py-10 rounded-2xl `}>
                         {error &&
                             <Alert text={error} onPress={() => setError("")} />
                         }
-                        <Animated.View entering={FadeInDown.duration(1000).springify()} className="w-full bg-black/5 px-5 mb-3 rounded-2xl">
+                        <Animated.View entering={FadeInDown.duration(500).springify()} className={`w-full px-5 mb-3 rounded-2xl ${bgInputs}`}>
                             <TextInput className={`rounded-2xl ${textStyle} `} placeholder='Titulo' placeholderTextColor={theme.colors.currentTheme === 'dark' ? 'white' : 'gray'} onChangeText={setTitle} value={title} />
                         </Animated.View>
 
-                        <Animated.View entering={FadeInDown.delay(200).duration(1000).springify()} className="w-full bg-black/5 px-5 mb-3 rounded-2xl">
+                        <Animated.View entering={FadeInDown.delay(200).duration(500).springify()} className={`w-full px-5 mb-3 rounded-2xl ${bgInputs}`}>
                             <TextInput className={` rounded-2xl ${textStyle}`} maxLength={200} numberOfLines={5} placeholder='Escriba su mensaje aquí...' placeholderTextColor={theme.colors.currentTheme === 'dark' ? 'white' : 'gray'} onChangeText={setComment} value={comment} />
                             <Text className={`${textStyle} text-sm text-muted-foreground text-right mt-1`} >
                                 {comment.length}/{200}
                             </Text>
                         </Animated.View>
 
-                        <Animated.View entering={FadeInDown.delay(400).duration(1000).springify()} className="w-full bg-black/5 p-5 mb-3 rounded-2xl">
+                        <Animated.View entering={FadeInDown.delay(400).duration(500).springify()} className="w-full p-5 mb-3 rounded-2xl">
                             <Text className={`text-bold ${textStyle}`}>
                                 Rating: {rating}
                             </Text>
 
-                            <View className='flex-row mt-3 '>
+                            <View className='flex-row mt-3'>
                                 {[1, 2, 3, 4, 5].map((star) => (
                                     <Pressable key={star} onPress={() => setRating(star)}>
                                         <AntDesign name={star <= Number(rating) ? "star" : "staro"} size={24} color={star <= Number(rating) ? "gold" : "gray"} />
@@ -81,10 +80,10 @@ const ReviewModal = ({ bookId, visible, onClose }) => {
                             </View>
                         </Animated.View>
 
-                        <Animated.View entering={FadeInDown.delay(600).duration(1000).springify()} className={'flex-row justify-around mt-5'}>
-                            <Pressable onPress={handleCloseModal} className='p-3 rounded-2xl bg-gray-300'><Text className="text-white text-xl text-center font-bold">Cancelar</Text></Pressable>
+                        <Animated.View entering={FadeInDown.delay(600).duration(500).springify()} className={'flex-row justify-around mt-5'}>
+                            <Pressable onPress={handleCloseModal} className={`p-3 rounded-2xl ${theme.background.btn_secondary}`}><Text className={`${theme.colors.textWhite2} text-xl text-center font-bold`}>Cancelar</Text></Pressable>
 
-                            <Pressable onPress={handleAddReview} className={`p-3 rounded-2xl`} style={{ backgroundColor: theme.colors.btnPrimary }} ><Text className="text-white text-xl text-center font-bold">Agregar</Text></Pressable>
+                            <Pressable onPress={handleAddReview} className={`p-3 rounded-2xl ${theme.background.btn_primary}`} ><Text className={`${theme.colors.textWhite2} text-xl text-center font-bold`}>Agregar</Text></Pressable>
                         </Animated.View>
                     </View>
                 </View>

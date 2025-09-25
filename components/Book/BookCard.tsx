@@ -1,7 +1,7 @@
-import { useTheme } from "@/theme/ThemeProvider";
-import { Link } from "expo-router";
 import { useState } from "react";
-import { View, Text, Image, StyleSheet, ActivityIndicator } from "react-native";
+import { Link } from "expo-router";
+import { View, Text, Image, ActivityIndicator } from "react-native";
+import { useTheme } from "@/theme/ThemeProvider";
 
 interface BookCardItemProps {
   _id: string;
@@ -22,30 +22,31 @@ export const BookCard: React.FC<{ book: BookCardItemProps }> = ({ book }) => {
       href={`/${book._id}`}
       // href={{ pathname: "/[book_Id]", params: { id: book._id } }}
       key={book._id}
-      style={{ ...styles.card, backgroundColor: theme.colors.card }}
-      className="rounded-2xl bg-sky-50 mb-6 ">
-      <View style={styles.row}>
-        <View style={styles.imageContainer}>
-          {loadingImage && <ActivityIndicator size="large" color="bg-sky-500" style={styles.loader} />}
+      className={`rounded-3xl mb-6 elevation-md ${theme.colors.card}`}>
+      <View className="flex-row items-start justify-between">
+        <View className="relative justify-center items-center w-28 h-56 m-2">
+          {loadingImage && <ActivityIndicator className="absolute top-5 left-10 z-10" size="large" color="bg-sky-200" />}
+
           <Image
+            className="rounded-2xl w-28 h-56"
             resizeMode="cover"
             source={book.coverImage ? { uri: book.coverImage } : require("@/assets/no-image.jpg")}
-            style={styles.image}
             onLoadEnd={() => setLoadingImage(false)}
           />
         </View>
-        <View style={styles.infoContainer}>
-          <Text style={{ ...styles.title, color: theme.colors.primary }}>{book.title}</Text>
-          <Text style={{ ...styles.author, color: theme.colors.textContent }}>Autor: {book.author}</Text>
-          <Text style={{ ...styles.publisher, color: theme.colors.textContent }}>Editorial: {book.publisher}</Text>
 
-          <View style={styles.genres}>
-            <Text style={{ ...styles.textGenres, color: theme.colors.textContent }}>
+        <View className="flex-1 justify-center items-start pl-3 pt-3">
+          <Text className={`my-2 text-4xl mr-1 font-bold ${theme.colors.textContent}`}>{book.title}</Text>
+          <Text className={`text-xl ${theme.colors.textContent}`}>Autor: {book.author}</Text>
+          <Text className={`text-base flex-shrink mr-1 ${theme.colors.textContent}`}>Editorial: {book.publisher}</Text>
+
+          <View className={`flex-shrink my-6 mr-3`}>
+            <Text className={`font-bold text-base`} >
               Generos:{" "}
               {book.genres.map((g, index) => (
-                <Text style={{ ...styles.genre, color: theme.colors.textContent }} key={index}>
+                <Text className={`text-sm font-normal`} key={index}>
                   {g}
-                  {", "}
+                  {index === book.genres.length - 1 ? "." : ","}
                 </Text>
               ))}
             </Text>
@@ -55,79 +56,3 @@ export const BookCard: React.FC<{ book: BookCardItemProps }> = ({ book }) => {
     </Link>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    // backgroundColor: theme.colors.background,
-    marginBottom: 24,
-    borderRadius: 28,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.18,
-    shadowRadius: 8,
-    elevation: 9,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-  },
-  imageContainer: {
-    position: "relative",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 120,
-    height: 224,
-  },
-  loader: {
-    position: "absolute",
-    top: "40%",
-    left: "25%",
-    zIndex: 2,
-  },
-  image: {
-    width: 100,
-    height: 180,
-    borderRadius: 14,
-    backgroundColor: "#e5e7eb",
-  },
-  infoContainer: {
-    flex: 1,
-    paddingLeft: 12,
-    paddingTop: 12,
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#222",
-    marginBottom: 10,
-    marginTop: 7,
-  },
-  author: {
-    fontSize: 16,
-    color: "#059669",
-    fontWeight: "600",
-  },
-  publisher: {
-    fontSize: 15,
-    color: "#555",
-    fontWeight: "bold",
-  },
-  genres: {
-    flexShrink: 5,
-    marginTop: 18,
-    marginRight: 15,
-  },
-  textGenres: {
-    fontSize: 15,
-    color: "#555",
-    fontWeight: "bold",
-    textAlign: "left",
-  },
-  genre: {
-    fontSize: 14,
-    color: "#555",
-    fontWeight: "semibold",
-    textAlign: "left",
-  },
-});
