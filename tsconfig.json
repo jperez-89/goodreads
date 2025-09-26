@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    //Para no usar el arroba en los imports
+    "baseUrl": "./",
+    // Para usar el arroba en los imports
     "paths": {
       "@/*": [
         "./*",
