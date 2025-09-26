@@ -6,12 +6,14 @@ import useBook from '@/hooks/useBook';
 import { useSession } from '@/context/aContext';
 import Alert from '../Alert';
 import { useTheme } from '@/theme/ThemeProvider';
+import { useNavigation, useRouter } from 'expo-router';
 
 const ReviewModal = ({ bookId, visible, onClose }) => {
     const [title, setTitle] = useState("")
     const [comment, setComment] = useState("")
     const [rating, setRating] = useState(0)
     const [error, setError] = useState("")
+    const router = useRouter();
 
     const { addReview } = useBook();
 
@@ -36,7 +38,7 @@ const ReviewModal = ({ bookId, visible, onClose }) => {
         setRating(0)
         setError("")
         onClose(false)
-
+        router.replace(`/${bookId}`)
     }
 
     function handleCloseModal(): void {
@@ -44,7 +46,7 @@ const ReviewModal = ({ bookId, visible, onClose }) => {
         setComment("")
         setRating(0)
         setError("")
-        onClose(false)
+        onClose(false);
     }
 
     return (
