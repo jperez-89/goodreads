@@ -1,6 +1,5 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { useEffect, useRef, useState } from "react"
+import Loader from "@/components/Loader"
+import { lazy, useEffect, useRef, useState } from "react"
 
 // Esta funcion se utiliza para cargar data cuando se llega a una seccion
 const useNearScreen = ({ distance = '100px' }) => {
@@ -35,21 +34,26 @@ const useNearScreen = ({ distance = '100px' }) => {
   })
 
   return { isNearScreen, fromRef }
-
 }
 
+
+import React, { Suspense } from 'react'
+import { View } from 'react-native'
 
 // Forma de uso de hook
 export default function Lazy() {
   const { isNearScreen, fromRef } = useNearScreen({ distance: '200px' })
 
+  const Table = lazy(() => import("@/components/Table"))
+
   return <View ref={fromRef}>
-    {
-      isNearScreen ?
-        <View>
-          <Text>Hola</Text>
-        </View>
-        : null
-    }
+    <Suspense fallback={<Loader />}>
+      {
+        isNearScreen ?
+          <Table />
+          :
+          <Loader />
+      }
+    </Suspense>
   </View>
 }
