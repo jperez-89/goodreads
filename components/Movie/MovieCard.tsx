@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import { View, StyleSheet, Text, Image, Animated } from "react-native";
+import { View, Text, Image, Animated } from "react-native";
 
 export default function MovieCard({ movie }) {
   return (
     <View
       key={movie.slug}
-      className="bg-white/95 p-5 my-4 mx-3 rounded-3xl elevation-sm items-center"
+      className="bg-white/95 p-5 my-4 mx-3 rounded-3xl elevation items-center"
     >
       <Text className="text-3xl font-bold mb-5">{movie.title}</Text>
       <Image width={127} height={167} source={{ uri: movie.image }} className="rounded-xl w-96 h-56" />
@@ -46,41 +46,3 @@ export function AnimatedMovieCard({ movie, index }) {
     </Animated.View>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    width: 380,
-    padding: 10,
-    marginBottom: 42,
-    backgroundColor: "#e0dbdbd7",
-    borderRadius: 35,
-  },
-
-  image: {
-    marginHorizontal: 125,
-    width: 127,
-    height: 167,
-    borderRadius: 10,
-  },
-
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: "#131212ce",
-    marginTop: 10,
-  },
-
-  description: {
-    marginHorizontal: 8,
-    paddingBottom: 10,
-    fontSize: 16,
-    textAlign: "justify",
-    color: "#464141ff",
-  },
-  score: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "green",
-    marginBottom: 10,
-  },
-});

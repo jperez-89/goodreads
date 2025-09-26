@@ -10,8 +10,7 @@ export async function getMostPopularMovies() {
   } = json;
 
   return items.map((movie) => {
-    const { description, slug, releaseDate, image, criticScoreSummary, title } =
-      movie;
+    const { description, slug, releaseDate, image, criticScoreSummary, title } = movie;
     const { score } = criticScoreSummary;
 
     // crea la imagen

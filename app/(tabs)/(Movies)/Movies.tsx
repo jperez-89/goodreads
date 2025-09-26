@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, View } from "react-native";
 import { getMostPopularMovies } from "@/services/metacritics";
-import { AnimatedMovieCard } from "./MovieCard";
+import { AnimatedMovieCard } from "@/components/Movie/MovieCard";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
 
+  const getMovies = async () => {
+    const movies = await getMostPopularMovies();
+    setMovies(movies);
+  }
+
   useEffect(() => {
-    getMostPopularMovies().then((movies) => {
-      setMovies(movies);
-    });
+    getMovies()
   }, []);
 
   return (
@@ -17,13 +20,16 @@ export default function Movies() {
       <View>
         {movies.length === 0 ?
           (
-            <ActivityIndicator color={"#000"} size={"large"} />
+            <ActivityIndicator color={"bg-sky-500"} size={"large"} />
           ) :
           (
             <FlatList
               data={movies}
               keyExtractor={(movie) => movie.slug}
-              renderItem={({ item: movie, index }) => <AnimatedMovieCard movie={movie} index={index} />} />
+              renderItem={({ item: movie, index }) => <AnimatedMovieCard movie={movie} index={index} />}
+              onRefresh={getMovies}
+              refreshing={false}
+            />
           )}
       </View></>
   )
