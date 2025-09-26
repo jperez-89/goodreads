@@ -116,7 +116,7 @@ const SignInScreen = () => {
             {/* Sign Up */}
             <View className="flex-row mt-8">
                 <Text className="text-gray-500">Aún no tienes una cuenta? </Text>
-                <TouchableOpacity onPress={() => router.push('./signupScreen')}>
+                <TouchableOpacity onPress={() => router.push('./signup')}>
                     <Text className="text-blue-500 font-semibold">Sign Up</Text>
                 </TouchableOpacity>
             </View>

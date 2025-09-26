@@ -86,7 +86,7 @@ const SignUpScreen = () => {
 
                     <Animated.View entering={FadeInDown.delay(1200).duration(1000).springify()} className="flex-row justify-center mt-2">
                         <Text>Ya tienes cuenta?</Text>
-                        <Pressable onPress={() => router.push('./signinScreen')}><Text className="text-sky-600 font-bold text-center "> Inicia Sesión</Text></Pressable>
+                        <Pressable onPress={() => router.push('./signin')}><Text className="text-sky-600 font-bold text-center "> Inicia Sesión</Text></Pressable>
                     </Animated.View>
                 </View>
             </View>
