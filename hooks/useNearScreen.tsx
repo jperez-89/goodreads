@@ -1,4 +1,4 @@
-import Loader from "@/components/Loader"
+import CardLoader from "@/components/CardLoader"
 import { lazy, useEffect, useRef, useState } from "react"
 
 // Esta funcion se utiliza para cargar data cuando se llega a una seccion
@@ -47,12 +47,12 @@ export default function Lazy() {
   const Table = lazy(() => import("@/components/Table"))
 
   return <View ref={fromRef}>
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<CardLoader />}>
       {
         isNearScreen ?
           <Table />
           :
-          <Loader />
+          <CardLoader />
       }
     </Suspense>
   </View>
