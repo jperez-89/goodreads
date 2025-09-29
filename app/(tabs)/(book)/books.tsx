@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import useBook from "@/hooks/useBook";
 
@@ -28,7 +28,7 @@ export default function Books() {
                 onEndReachedThreshold={0.5}
                 ListFooterComponent={() => {
                   if (!loading) {
-                    return <ActivityIndicator color={"bg-sky-500"} size={'large'} />;
+                    return <ActivityIndicator color={"bg-sky-500"} size={"large"} />;
                   }
                 }}
               />

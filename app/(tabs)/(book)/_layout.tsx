@@ -4,7 +4,7 @@ import { useSession } from '@/context/aContext';
 import HeaderRight from '@/components/HeaderRight';
 
 export default function Layout() {
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme, } = useTheme();
     const { signOut, session } = useSession();
     const { user } = JSON.parse(session);
 
@@ -24,7 +24,7 @@ export default function Layout() {
                 headerTintColor: theme.colors.headerTintColor,
                 animation: 'flip',
                 animationDuration: 500,
-                headerRight: () => <HeaderRight onToggle={toggleTheme} onChangeTheme={handlePress} />
+                headerRight: () => <HeaderRight onToggle={toggleTheme} onPress={handlePress} />
             }} />
     )
 }

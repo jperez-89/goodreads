@@ -1,4 +1,4 @@
-import { createContext, type PropsWithChildren, useContext } from 'react';
+import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 import { useStorageState } from '@/hooks/useStorageState';
 import { loginService, registerService } from '@/services/libraries';
 import * as SecureStore from 'expo-secure-store';
@@ -10,6 +10,8 @@ interface AuthContextType {
     getUser: () => void;
     session?: string | null;
     isLoading: boolean;
+    toggleStatusBar: () => void;
+    hiddenStatusBar: boolean
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -26,6 +28,7 @@ export function useSession() {
 
 export function SessionProvider({ children }: PropsWithChildren) {
     const [[isLoading, session], setSession] = useStorageState('session');
+    const [hiddenStatusBar, setHidden] = useState(false);
 
     const call_Register = async (email: string, password: string, firstName: string, lastName: string) => {
         const response = await registerService({ email, password, firstName, lastName })
@@ -59,6 +62,9 @@ export function SessionProvider({ children }: PropsWithChildren) {
         return data
     }
 
+    const toggleStatusBar = () => setHidden(!hiddenStatusBar);
+
+
     return (
         <AuthContext.Provider
             value={{
@@ -88,7 +94,9 @@ export function SessionProvider({ children }: PropsWithChildren) {
                     // console.log("aContext L73 - getUser", data);
                 },
                 session,
-                isLoading
+                isLoading,
+                toggleStatusBar,
+                hiddenStatusBar
             }}>
             {children}
         </AuthContext.Provider>

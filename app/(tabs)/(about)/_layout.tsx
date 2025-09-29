@@ -5,7 +5,7 @@ import HeaderRight from '@/components/HeaderRight';
 
 export default function Layout() {
     const { theme, toggleTheme } = useTheme();
-    const { signOut, session } = useSession();
+    const { signOut, session, hiddenStatusBar } = useSession();
     const { user } = JSON.parse(session);
 
     const { access_token } = JSON.parse(session);
@@ -15,16 +15,18 @@ export default function Layout() {
     };
 
     return (
-        <Stack
-            screenOptions={{
-                headerTitle: `About - ${user.firstName} ${user.lastName}`,
-                contentStyle: { backgroundColor: theme.background.content },
-                statusBarStyle: 'auto',
-                headerStyle: { backgroundColor: theme.background.header },
-                headerTintColor: theme.colors.headerTintColor,
-                animation: 'flip',
-                animationDuration: 500,
-                headerRight: () => <HeaderRight onToggle={toggleTheme} onChangeTheme={handlePress} />
-            }} />
+        <>
+            <Stack
+                screenOptions={{
+                    headerTitle: `About - ${user.firstName} ${user.lastName}`,
+                    contentStyle: { backgroundColor: theme.background.content },
+                    statusBarStyle: 'auto',
+                    headerStyle: { backgroundColor: theme.background.header },
+                    headerTintColor: theme.colors.headerTintColor,
+                    animation: 'flip',
+                    animationDuration: 500,
+                    headerRight: () => <HeaderRight onToggle={toggleTheme} onPress={handlePress} />
+                }} />
+        </>
     )
 }

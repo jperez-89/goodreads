@@ -3,15 +3,20 @@ import { Stack } from "expo-router";
 import { SessionProvider, useSession } from "@/context/aContext";
 import { SplashScreenController } from "@/components/SplashScreenController";
 import { ThemeProvider } from "@/theme/ThemeProvider";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function Layout() {
   return (
-    <SessionProvider>
-      <SplashScreenController />
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </SessionProvider>
+    <SafeAreaProvider>
+      <SafeAreaView edges={['right', 'left',]} className="flex-1">
+        <SessionProvider>
+          <SplashScreenController />
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </SessionProvider>
+      </SafeAreaView>
+    </SafeAreaProvider>
   )
 }
 

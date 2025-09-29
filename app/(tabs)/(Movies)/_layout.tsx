@@ -24,7 +24,7 @@ export default function Layout() {
                 headerTintColor: theme.colors.headerTintColor,
                 animation: 'flip',
                 animationDuration: 500,
-                headerRight: () => <HeaderRight onToggle={toggleTheme} onChangeTheme={handlePress} />
+                headerRight: () => <HeaderRight onToggle={toggleTheme} onPress={handlePress} />
             }} />
     )
 }
