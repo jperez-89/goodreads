@@ -4,7 +4,7 @@ import { useSession } from '@/context/aContext';
 import HeaderRight from '@/components/HeaderRight';
 
 export default function Layout() {
-    const { theme, toggleTheme, } = useTheme();
+    const { theme, toggleTheme, headerShown } = useTheme();
     const { signOut, session } = useSession();
     const { user } = JSON.parse(session);
 
@@ -17,10 +17,12 @@ export default function Layout() {
     return (
         <Stack
             screenOptions={{
+                headerShown: headerShown,
                 headerTitle: `Books - ${user.firstName} ${user.lastName}`,
                 contentStyle: { backgroundColor: theme.background.content },
                 statusBarStyle: 'auto',
                 headerStyle: { backgroundColor: theme.background.header },
+                // headerTransparent: true,
                 headerTintColor: theme.colors.headerTintColor,
                 animation: 'flip',
                 animationDuration: 500,

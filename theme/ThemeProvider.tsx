@@ -18,6 +18,7 @@ type Theme = {
     };
     background: {
         header: string;
+        header2: string;
         content: string;
         bg_content: string;
         btn_primary: string;
@@ -42,6 +43,7 @@ const lightTheme: Theme = {
     },
     background: {
         header: "#0284C7",
+        header2: "bg-sky-600",
         content: "#F3F3F3",
         bg_content: 'bg-white',
         btn_primary: "bg-sky-600",
@@ -66,6 +68,7 @@ const darkTheme: Theme = {
     },
     background: {
         header: "#082F49",
+        header2: "bg-sky-950",
         content: "#082F49",
         bg_content: 'bg-sky-950',
         btn_primary: "bg-sky-700",
@@ -76,6 +79,8 @@ const darkTheme: Theme = {
 type ThemeContextType = {
     theme: Theme;
     toggleTheme: () => void;
+    headerShown: boolean;
+    toggleHeader: (status) => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -92,8 +97,14 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
         );
     };
 
+    const [headerShown, setHeaderShown] = useState(true);
+    const toggleHeader = (status) => {
+        setHeaderShown(status);
+    };
+
+
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme, headerShown, toggleHeader }}>
             {children}
         </ThemeContext.Provider>
     );

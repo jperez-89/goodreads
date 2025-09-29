@@ -2,6 +2,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Feather from "@expo/vector-icons/Feather";
+import { ChevronLeft } from "lucide-react-native";
 
 export const Mail = () => {
   return <AntDesign name="mail" size={24} color="black" />;
@@ -57,4 +58,8 @@ export const MoviesIcon = (props) => {
 
 export const BooksIcon = (props) => {
   return <MaterialIcons name="book" size={24} color="black" {...props} />;
+};
+
+export const BackIcon = (props) => {
+  return <ChevronLeft size={24} color="black" {...props} />;
 };

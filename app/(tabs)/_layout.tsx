@@ -4,12 +4,15 @@ import { AboutIcon, BooksIcon, MoviesIcon } from '@/components/Icons/Icons';
 import { useTheme } from '@/theme/ThemeProvider';
 
 export default function TabsLayout() {
-    const { theme } = useTheme();
+    const { theme, headerShown, toggleTheme } = useTheme();
 
     return (
         <Tabs screenOptions={{
             lazy: true,
             headerShown: false,
+            // headerRight: () => <HeaderRight onToggle={toggleTheme} onPress={() => { }} />,
+            headerStyle: { backgroundColor: theme.background.header, },
+            headerTintColor: theme.colors.headerTintColor,
             tabBarStyle: { backgroundColor: theme.background.header },
             tabBarActiveTintColor: theme.colors.textWhite,
             tabBarInactiveTintColor: theme.colors.textBlack

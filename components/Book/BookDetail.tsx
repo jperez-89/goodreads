@@ -6,6 +6,7 @@ import useBook from '@/hooks/useBook';
 import ReviewModal from './ReviewModal';
 import { useSession } from '@/context/aContext';
 import { useTheme } from '@/theme/ThemeProvider';
+import CardLoader from '../CardLoader';
 
 const BookDetail: React.FC<BookDetailProps> = ({ id }) => {
     const { theme } = useTheme();
@@ -25,7 +26,7 @@ const BookDetail: React.FC<BookDetailProps> = ({ id }) => {
 
 
     if (!book) {
-        return <Text>Loading...</Text>;
+        return <CardLoader />
     }
     const { author, coverImage, title, averageRating } = book;
     const textColor = theme.colors.currentTheme === 'dark' ? theme.colors.textWhite2 : theme.colors.textBlack;
