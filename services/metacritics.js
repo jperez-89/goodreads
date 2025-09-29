@@ -9,7 +9,7 @@ export async function getMostPopularMovies() {
     data: { items },
   } = json;
 
-  return items.map((movie) => {
+  const movies = await items.map((movie) => {
     const { description, slug, releaseDate, image, criticScoreSummary, title } = movie;
     const { score } = criticScoreSummary;
 
@@ -26,6 +26,10 @@ export async function getMostPopularMovies() {
       image: img,
     };
   });
+
+  // console.log("meta", movies);
+
+  return movies;
 }
 
 export async function getMovieDetails(slug) {
